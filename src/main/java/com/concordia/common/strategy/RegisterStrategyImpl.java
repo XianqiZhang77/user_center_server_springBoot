@@ -4,11 +4,11 @@ import com.concordia.common.util.MD5Utils;
 import com.concordia.common.util.UUIDUtils;
 import com.concordia.dao.RegisterRecordDao;
 import com.concordia.dao.UserDao;
-import com.concordia.entity.RegisterRecord;
-import com.concordia.entity.User;
-import com.concordia.entity.rpcDomain.common.RespResult;
-import com.concordia.entity.rpcDomain.common.ResultCode;
-import com.concordia.entity.rpcDomain.request.RegisterRequest;
+import com.concordia.pojo.RegisterRecord;
+import com.concordia.pojo.User;
+import com.concordia.rpcDomain.common.RespResult;
+import com.concordia.rpcDomain.common.ResultCode;
+import com.concordia.rpcDomain.request.RegisterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

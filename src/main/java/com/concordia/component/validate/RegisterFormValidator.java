@@ -1,8 +1,8 @@
 package com.concordia.component.validate;
 
 import com.concordia.component.exception.ValidateException;
-import com.concordia.entity.rpcDomain.common.ResultCode;
-import com.concordia.entity.rpcDomain.request.RegisterRequest;
+import com.concordia.rpcDomain.common.ResultCode;
+import com.concordia.rpcDomain.request.RegisterRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +20,7 @@ public class RegisterFormValidator implements FormValidator<RegisterRequest> {
     public void validate(RegisterRequest arg) throws ValidateException{
         if (StringUtils.isBlank(arg.getUsername())
                 || StringUtils.isBlank(arg.getPassword())
-                || StringUtils.isBlank(arg.getEmail())
-                || StringUtils.isBlank(arg.getCaptcha())) {
+                || StringUtils.isBlank(arg.getEmail())) {
             throw new ValidateException(ResultCode.REGISTER_DATA_IS_WRONG
                     , "Form validation fails, please check your input");
         }

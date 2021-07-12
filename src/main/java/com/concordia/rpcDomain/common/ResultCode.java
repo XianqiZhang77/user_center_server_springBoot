@@ -1,4 +1,4 @@
-package com.concordia.entity.rpcDomain.common;
+package com.concordia.rpcDomain.common;
 
 public enum ResultCode {
 

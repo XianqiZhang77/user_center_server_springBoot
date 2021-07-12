@@ -1,6 +1,6 @@
 package com.concordia.component.exception;
 
-import com.concordia.entity.rpcDomain.common.ResultCode;
+import com.concordia.rpcDomain.common.ResultCode;
 
 public class ValidateException extends RuntimeException{
 

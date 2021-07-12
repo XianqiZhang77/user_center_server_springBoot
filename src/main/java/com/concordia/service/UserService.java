@@ -1,11 +1,12 @@
-package com.concordia.common.strategy;
+package com.concordia.service;
 
 import com.concordia.rpcDomain.common.RespResult;
 import com.concordia.rpcDomain.request.RegisterRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface UserStrategy {
+public interface UserService {
 
-    RespResult doProcess(RegisterRequest registerRequest, OperatorStrategyEnum strategyEnum);
+    RespResult beforeRegister(RegisterRequest registerRequest);
+
 }
