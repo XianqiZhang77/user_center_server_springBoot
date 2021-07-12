@@ -1,6 +1,6 @@
 package com.concordia.service.impl;
 
-import com.concordia.component.util.RandomCaptcha;
+import com.concordia.common.util.RandomCaptcha;
 import com.concordia.entity.rpcDomain.request.RegisterRequest;
 import com.concordia.service.MailService;
 import com.concordia.service.ToolService;
