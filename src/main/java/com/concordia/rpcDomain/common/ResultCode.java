@@ -1,10 +1,13 @@
-package com.concordia.entity.rpcDomain.common;
+package com.concordia.rpcDomain.common;
 
 public enum ResultCode {
 
     SUCCESS(0, "success"),
+    REGISTER_CAPICHA_SENT(2001, "email captcha has been sent"),
     FAIL(-1, "fail"),
-    REGISTER_DATA_IS_WRONG(-2001, "registration information error");
+    REGISTER_DATA_IS_WRONG(-2001, "registration information error"),
+    MAIL_SEND_FAIL(-2002, "failed to send email");
+
 
     int code;
     String message;

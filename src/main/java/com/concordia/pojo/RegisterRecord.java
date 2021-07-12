@@ -1,4 +1,4 @@
-package com.concordia.entity;
+package com.concordia.pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;

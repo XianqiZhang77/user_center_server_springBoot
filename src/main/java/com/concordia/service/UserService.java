@@ -1,12 +1,12 @@
 package com.concordia.service;
 
+import com.concordia.rpcDomain.common.RespResult;
 import com.concordia.rpcDomain.request.RegisterRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface ToolService {
+public interface UserService {
 
-    boolean sendRegisterMail(RegisterRequest registerRequest);
+    RespResult beforeRegister(RegisterRequest registerRequest);
 
-    String getCaptcha();
 }

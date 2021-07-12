@@ -1,4 +1,4 @@
-package com.concordia.component.util;
+package com.concordia.common.util;
 
 import java.util.Random;
 

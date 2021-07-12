@@ -1,4 +1,4 @@
-package com.concordia.entity.rpcDomain.request;
+package com.concordia.rpcDomain.request;
 
 import java.io.Serializable;
 

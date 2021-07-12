@@ -1,7 +1,7 @@
 package com.concordia.service.impl;
 
-import com.concordia.component.util.RandomCaptcha;
-import com.concordia.entity.rpcDomain.request.RegisterRequest;
+import com.concordia.common.util.RandomCaptcha;
+import com.concordia.rpcDomain.request.RegisterRequest;
 import com.concordia.service.MailService;
 import com.concordia.service.ToolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class ToolServiceImpl implements ToolService {
         StringBuilder content = new StringBuilder();
         content.append("Hello ")
                 .append(registerRequest.getUsername())
-                .append("/n")
+                .append("\n")
                 .append("Here is your captcha number: ")
                 .append(captcha);
         return mailService.sendSimpleMail(registerRequest.getEmail()
