@@ -24,7 +24,7 @@ public class User implements Serializable {
     private String password;
 
     @Column(name = "is_verified")
-    private String isVerified;
+    private Boolean isVerified;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -56,12 +56,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getIsVerified() {
+    public Boolean getVerified() {
         return isVerified;
     }
 
-    public void setIsVerified(String isVerified) {
-        this.isVerified = isVerified;
+    public void setVerified(Boolean verified) {
+        isVerified = verified;
     }
 
     public String getPhoneNumber() {

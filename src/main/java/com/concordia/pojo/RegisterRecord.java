@@ -14,8 +14,8 @@ public class RegisterRecord implements Serializable {
     @Id
     private String id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "username")
+    private String username;
 
     @Column
     private String email;
@@ -35,12 +35,12 @@ public class RegisterRecord implements Serializable {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
