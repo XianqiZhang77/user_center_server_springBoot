@@ -21,6 +21,7 @@ public class ToolServiceImpl implements ToolService {
     public boolean sendRegisterMail(RegisterRequest registerRequest) {
         // captcha
         String captcha = RandomCaptcha.getCaptcha();
+        registerRequest.setCaptcha(captcha);
         StringBuilder content = new StringBuilder();
         content.append("Hello ")
                 .append(registerRequest.getUsername())
