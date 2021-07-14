@@ -13,24 +13,27 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1605451091436289527L;
 
-    @Column
+    @Column(name = "id", nullable = false, length = 64)
     @Id
     private String id;
 
-    @Column
+    @Column(name = "username", nullable = false, length = 16)
     private String username;
 
-    @Column
+    @Column(name = "password", nullable = false, length = 64)
     private String password;
+
+    @Column(name = "email", length = 32)
+    private String email;
+
+    @Column(name = "phone_number",length = 32)
+    private String phoneNumber;
+
+    @Column(name = "area_number",length = 16)
+    private String areaNumber;
 
     @Column(name = "is_verified")
     private Boolean isVerified;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "area_number")
-    private String areaNumber;
 
     public String getId() {
         return id;
@@ -54,6 +57,15 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Boolean getVerified() {

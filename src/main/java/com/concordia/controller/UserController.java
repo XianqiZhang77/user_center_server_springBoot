@@ -28,6 +28,7 @@ public class UserController {
 
     @PostMapping(value = "/register", produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
+    @ResponseStatus(value = HttpStatus.CREATED)
     public RespResult register(@RequestBody RegisterRequest registerRequest) {
         try {
             if (!userService.checkCaptcha(registerRequest)) {
