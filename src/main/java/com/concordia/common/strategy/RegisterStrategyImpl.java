@@ -28,6 +28,7 @@ public class RegisterStrategyImpl implements UserStrategy{
         if (strategyEnum == OperatorStrategyEnum.SUCCESS) {
             RegisterRecord registerRecord = new RegisterRecord();
             registerRecord.setId(UUIDUtils.getUUID());
+            registerRecord.setUsername(registerRequest.getUsername());
             registerRecord.setEmail(registerRecord.getEmail());
             registerRecord.setCaptcha(registerRequest.getCaptcha());
             registerRecord.setSendTime(new Date(System.currentTimeMillis()));

@@ -9,4 +9,8 @@ public interface UserService {
 
     RespResult beforeRegister(RegisterRequest registerRequest);
 
+    boolean checkCaptcha(RegisterRequest registerRequest) throws NullPointerException;
+
+    RespResult registerUser(RegisterRequest registerRequest);
+    
 }

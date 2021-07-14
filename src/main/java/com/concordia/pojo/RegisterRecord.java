@@ -10,22 +10,23 @@ public class RegisterRecord implements Serializable {
 
     private static final long serialVersionUID = 8243079172090464012L;
 
-    @Column
     @Id
+    @Column(name = "id", length = 64)
     private String id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "username", length = 16)
+    private String username;
 
-    @Column
+    @Column(name = "email", length = 64)
     private String email;
 
-    @Column
+    @Column(name = "captcha", length = 16)
     private String captcha;
 
     @Column(name = "send_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date sendTime;
+
 
     public String getId() {
         return id;
@@ -35,12 +36,12 @@ public class RegisterRecord implements Serializable {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
