@@ -11,4 +11,11 @@ public class CustomException extends RuntimeException{
         this.resultCode = resultCode;
     }
 
+    public ResultCode getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(ResultCode resultCode) {
+        this.resultCode = resultCode;
+    }
 }
