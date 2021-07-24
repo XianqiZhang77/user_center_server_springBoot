@@ -14,10 +14,12 @@ import com.concordia.service.ToolService;
 import com.concordia.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User, String>
+        implements UserService {
 
     @Autowired
     private ReqValidateManager reqValidateManager;
@@ -33,6 +35,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+
+    @Override
+    protected JpaRepository getJpaRepository() {
+        return userDao;
+    }
 
     @Override
     public RespResult beforeRegister(RegisterRequest registerRequest) {
@@ -71,4 +79,6 @@ public class UserServiceImpl implements UserService {
     private void initUserInfo(User user) {
 
     }
+
+
 }
