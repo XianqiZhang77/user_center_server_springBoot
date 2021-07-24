@@ -29,7 +29,7 @@ public class RegisterStrategyImpl implements UserStrategy{
             RegisterRecord registerRecord = new RegisterRecord();
             registerRecord.setId(UUIDUtils.getUUID());
             registerRecord.setUsername(registerRequest.getUsername());
-            registerRecord.setEmail(registerRecord.getEmail());
+            registerRecord.setEmail(registerRequest.getEmail());
             registerRecord.setCaptcha(registerRequest.getCaptcha());
             registerRecord.setSendTime(new Date(System.currentTimeMillis()));
             registerRecordDao.save(registerRecord);
@@ -38,6 +38,8 @@ public class RegisterStrategyImpl implements UserStrategy{
             user.setUsername(registerRequest.getUsername());
             user.setPassword(MD5Utils.getMD5(registerRequest.getPassword()));
             user.setId(UUIDUtils.getUUID());
+            user.setVerified(Boolean.FALSE);
+            user.setEmail(registerRequest.getEmail());
             userDao.save(user);
             return new RespResult(ResultCode.REGISTER_CAPICHA_SENT);
 
