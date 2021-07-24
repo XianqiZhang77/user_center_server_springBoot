@@ -14,7 +14,8 @@ public enum ResultCode {
     PERMISSION_TOKEN_INVALID(-2007, "token is invalid"),
     USER_UN_VERIFIED(-2008, "account does not exist or unverified"),
     WRONG_PASSWORD(-2009, "password does not match"),
-
+    USER_UN_LOGGED_IN(-2010, "user is not in login status"),
+    SERVER_ERROR(-2011, "server error"),
     ;
 
     int code;

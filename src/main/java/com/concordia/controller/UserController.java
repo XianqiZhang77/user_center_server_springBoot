@@ -7,6 +7,7 @@ import com.concordia.rpcDomain.common.ResultCode;
 import com.concordia.rpcDomain.request.LoginRequest;
 import com.concordia.rpcDomain.request.RegisterRequest;
 import com.concordia.service.UserService;
+import com.concordia.token.JwtIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class UserController {
             , produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
+    @JwtIgnore
     public RespResult getCaptcha(@RequestBody RegisterRequest registerRequest) {
         return userService.beforeRegister(registerRequest);
     }
@@ -39,6 +41,7 @@ public class UserController {
     @PostMapping(value = "/register", produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     @ResponseStatus(value = HttpStatus.CREATED)
+    @JwtIgnore
     public RespResult register(@RequestBody RegisterRequest registerRequest) {
         try {
             if (!userService.checkCaptcha(registerRequest)) {
@@ -54,6 +57,7 @@ public class UserController {
 
     @PostMapping(value = "/login", produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
+    @JwtIgnore
     public RespResult login(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
         User user = userService.getUserByUsername(loginRequest.getUsername());
         if (!userService.checkVerified(user)) {
