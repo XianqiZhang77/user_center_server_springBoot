@@ -5,13 +5,11 @@ import com.concordia.common.strategy.OperatorStrategyEnum;
 import com.concordia.component.exception.ValidateException;
 import com.concordia.component.validate.ReqValidateManager;
 import com.concordia.dao.UserDao;
-import com.concordia.pojo.User;
+import com.concordia.pojo.*;
 import com.concordia.rpcDomain.common.RespResult;
 import com.concordia.rpcDomain.common.ResultCode;
 import com.concordia.rpcDomain.request.RegisterRequest;
-import com.concordia.service.RegisterRecordService;
-import com.concordia.service.ToolService;
-import com.concordia.service.UserService;
+import com.concordia.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,6 +33,17 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
 
     @Autowired
     private UserDao userDao;
+    
+    @Autowired
+    private AddressService addressService;
+    
+    @Autowired
+    private UserProfileService userProfileService;
+    
+    @Autowired
+    private UserPreferenceService userPreferenceService;
+    
+    @Autowired UserTagService userTagService;
 
 
     @Override
@@ -77,8 +86,44 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
     }
 
     private void initUserInfo(User user) {
+        String userId = user.getId();
 
+        Address address = new Address();
+        address.setUserId(userId);
+
+        UserPreference userPreference = new UserPreference();
+        userPreference.setUserId(userId);
+        userPreference.setOtherUserMessageNotice("1");
+        userPreference.setSysMessageNotice("1");
+        userPreference.setTodoNotice("1");
+
+        UserTag userTag = new UserTag();
+        userTag.setId(userId);
+
+        UserProfile userProfile = new UserProfile();
+        userProfile.setUserId(userId);
+
+        addressService.save(address);
+        userProfileService.save(userProfile);
+        userPreferenceService.save(userPreference);
+        userTagService.save(userTag);
     }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
