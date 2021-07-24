@@ -11,9 +11,12 @@ public enum ResultCode {
     REGISTER_RECORD_IS_EMPTY(-2004, "register record not found"),
     PERMISSION_SIGNATURE_ERROR(-2005, "permission signature failed"),
     PERMISSION_TOKEN_EXPIRED(-2006, "token has expired"),
-    PERMISSION_TOKEN_INVALID(-2007, "token is invalid")
+    PERMISSION_TOKEN_INVALID(-2007, "token is invalid"),
+    USER_UN_VERIFIED(-2008, "account does not exist or unverified"),
+    WRONG_PASSWORD(-2009, "password does not match"),
 
     ;
+
     int code;
     String message;
 

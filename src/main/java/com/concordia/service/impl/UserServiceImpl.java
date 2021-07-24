@@ -2,12 +2,14 @@ package com.concordia.service.impl;
 
 import com.concordia.common.strategy.ContextMapper;
 import com.concordia.common.strategy.OperatorStrategyEnum;
+import com.concordia.common.util.MD5Utils;
 import com.concordia.component.exception.ValidateException;
 import com.concordia.component.validate.ReqValidateManager;
 import com.concordia.dao.UserDao;
 import com.concordia.pojo.*;
 import com.concordia.rpcDomain.common.RespResult;
 import com.concordia.rpcDomain.common.ResultCode;
+import com.concordia.rpcDomain.request.LoginRequest;
 import com.concordia.rpcDomain.request.RegisterRequest;
 import com.concordia.service.*;
 import org.apache.commons.lang3.StringUtils;
@@ -83,6 +85,22 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
         userDao.save(user);
         initUserInfo(user);
         return new RespResult(ResultCode.SUCCESS);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userDao.getByUsername(username);
+    }
+
+    @Override
+    public boolean checkVerified(User user) {
+        return user != null && user.getVerified();
+    }
+
+    @Override
+    public boolean checkPassword(User user, LoginRequest loginRequest) {
+        return StringUtils.equals(user.getPassword()
+                , MD5Utils.getMD5(loginRequest.getPassword()));
     }
 
     private void initUserInfo(User user) {
