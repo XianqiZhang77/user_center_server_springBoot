@@ -26,7 +26,7 @@ public final class JwtTokenUtil {
     /**
      * generate token
      */
-    public String createJWT(String username, String userId) {
+    public static String createJWT(String username, String userId) {
         checkAudience();
         try {
             //HS256 encryption algorithm
