@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
 
