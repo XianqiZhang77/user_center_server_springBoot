@@ -20,7 +20,7 @@ public class ArticleRequest implements Serializable {
     @JsonIgnore
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date publishedTime;
+    private Date publishTime;
 
     @JsonProperty("article_tag_list")
     private List<String> articleTagList;
@@ -46,11 +46,11 @@ public class ArticleRequest implements Serializable {
     }
 
     public Date getPublishedTime() {
-        return publishedTime;
+        return publishTime;
     }
 
     public void setPublishedTime(Date publishedTime) {
-        this.publishedTime = publishedTime;
+        this.publishTime = publishedTime;
     }
 
     public List<String> getArticleTagList() {

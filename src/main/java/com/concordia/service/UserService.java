@@ -21,4 +21,5 @@ public interface UserService extends BaseService<User, String> {
 
     boolean checkPassword(User user, LoginRequest loginRequest);
 
+    RespResult getAccountCenterInfo(String userId);
 }
