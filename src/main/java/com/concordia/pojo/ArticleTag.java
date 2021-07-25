@@ -7,22 +7,24 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user_tag")
-public class UserTag implements Serializable {
+@Table(name = "article_tag")
+public class ArticleTag implements Serializable {
 
-
-    private static final long serialVersionUID = -5760292334141596973L;
+    private static final long serialVersionUID = -634345417387924787L;
 
     @Id
-    @Column(name = "id", nullable = false, length = 48)
+    @Column(name = "id", length = 48)
     private String id;
 
-    @Column(name = "user_id", nullable = false, length = 48)
-    private String userId;
+    @Column(name = "article_id", nullable = false, length = 48)
+    private String articleId;
 
     @Column(name = "tag_name", length = 128)
     private String tagName;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public String getId() {
         return id;
@@ -32,16 +34,12 @@ public class UserTag implements Serializable {
         this.id = id;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public String getArticleId() {
+        return articleId;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId;
     }
 
     public String getTagName() {
