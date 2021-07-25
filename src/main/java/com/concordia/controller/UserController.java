@@ -72,7 +72,7 @@ public class UserController {
         logger.info("Token: " + token);
         response.setHeader(JwtTokenUtil.AUTH_HEADER_KEY, JwtTokenUtil.TOKEN_PREFIX + token);
         HashMap<String, String> map = new HashMap<>();
-        map.put("token", JwtTokenUtil.TOKEN_PREFIX + token);
+        map.put("token", token);
         return new RespResult(ResultCode.SUCCESS, map);
     }
 
