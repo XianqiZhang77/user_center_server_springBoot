@@ -10,4 +10,5 @@ public interface UserPreferenceService extends BaseService<UserPreference, Strin
     RespResult getNoticeByUserId(String userId);
 
     RespResult updateNoticeByUserId(String userId, UserPreferenceReq userPreferenceReq);
+
 }

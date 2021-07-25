@@ -1,5 +1,7 @@
 package com.concordia.rpcDomain.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class UserPreferenceResp implements Serializable {
@@ -7,10 +9,13 @@ public class UserPreferenceResp implements Serializable {
 
     private static final long serialVersionUID = 3455327315221927300L;
 
+    @JsonProperty("todo_notice")
     private String todoNotice;
 
+    @JsonProperty("system_message_notice")
     private String sysMessageNotice;
 
+    @JsonProperty("other_user_message_notice")
     private String otherUserMessageNotice;
 
     public String getTodoNotice() {
