@@ -7,7 +7,7 @@ import com.concordia.rpcDomain.request.RegisterRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface UserService {
+public interface UserService extends BaseService<User, String> {
 
     RespResult beforeRegister(RegisterRequest registerRequest);
 
@@ -20,4 +20,5 @@ public interface UserService {
     boolean checkVerified(User user);
 
     boolean checkPassword(User user, LoginRequest loginRequest);
+
 }

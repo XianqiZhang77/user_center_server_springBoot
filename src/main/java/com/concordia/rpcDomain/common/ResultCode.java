@@ -3,7 +3,7 @@ package com.concordia.rpcDomain.common;
 public enum ResultCode {
 
     SUCCESS(0, "success"),
-    REGISTER_CAPICHA_SENT(2001, "email captcha has been sent"),
+    REGISTER_CAPTCHA_SENT(2001, "email captcha has been sent"),
     FAIL(-1, "fail"),
     REGISTER_DATA_IS_WRONG(-2001, "registration information error"),
     MAIL_SEND_FAIL(-2002, "failed to send email"),
@@ -16,6 +16,13 @@ public enum ResultCode {
     WRONG_PASSWORD(-2009, "password does not match"),
     USER_UN_LOGGED_IN(-2010, "user is not in login status"),
     SERVER_ERROR(-2011, "server error"),
+
+    /* 参数错误: 10001-19999 */
+    PARAM_IS_BLANK(10002, "param is empty"),
+
+
+    /* */
+    USER_NOT_EXIST(20001, "user does not exist"),
     ;
 
     int code;

@@ -41,7 +41,7 @@ public class RegisterStrategyImpl implements UserStrategy{
             user.setVerified(Boolean.FALSE);
             user.setEmail(registerRequest.getEmail());
             userDao.save(user);
-            return new RespResult(ResultCode.REGISTER_CAPICHA_SENT);
+            return new RespResult(ResultCode.REGISTER_CAPTCHA_SENT);
 
         } else {
             return new RespResult(ResultCode.MAIL_SEND_FAIL);
