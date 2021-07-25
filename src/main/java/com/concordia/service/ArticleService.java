@@ -5,6 +5,8 @@ import com.concordia.rpcDomain.common.RespResult;
 import com.concordia.rpcDomain.request.ArticleRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ArticleService extends BaseService<Article, String> {
 
@@ -15,4 +17,6 @@ public interface ArticleService extends BaseService<Article, String> {
     RespResult deleteArticleById(String userId, String articleId);
 
     RespResult showSingleArticleById(String articleId);
+
+    List<Article> getRecentArticles(String userId);
 }

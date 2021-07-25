@@ -12,13 +12,19 @@ import com.concordia.rpcDomain.common.RespResult;
 import com.concordia.rpcDomain.common.ResultCode;
 import com.concordia.rpcDomain.request.LoginRequest;
 import com.concordia.rpcDomain.request.RegisterRequest;
+import com.concordia.rpcDomain.response.ArticleResponse;
+import com.concordia.rpcDomain.response.UserCenterVOResp;
 import com.concordia.service.*;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, String>
@@ -48,7 +54,14 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
     @Autowired
     private UserPreferenceService userPreferenceService;
     
-    @Autowired UserTagService userTagService;
+    @Autowired
+    private UserTagService userTagService;
+
+    @Autowired
+    private ArticleService articleService;
+
+    @Autowired
+    private ArticleTagService articleTagService;
 
 
     @Override
@@ -105,6 +118,41 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
     public boolean checkPassword(User user, LoginRequest loginRequest) {
         return StringUtils.equals(user.getPassword()
                 , MD5Utils.getMD5(loginRequest.getPassword()));
+    }
+
+    /**
+     * get info of user center
+     * @param userId
+     * @return
+     */
+    @Override
+    public RespResult getAccountCenterInfo(String userId) {
+        UserCenterVOResp userCenterVOResp = new UserCenterVOResp();
+        Optional<User> userOptional = userDao.findById(userId);
+        if (!userOptional.isPresent()) {
+            return new RespResult(ResultCode.USER_NOT_EXIST);
+        }
+
+        User user = userOptional.get();
+        userCenterVOResp.setUsername(user.getUsername());
+        Address address = addressService.findById(userId).get();
+        String provinceAndCity = (address.getProvince() == null ? "" : address.getProvince())
+                + (address.getCity() == null ? "" : address.getCity());
+        userCenterVOResp.setProvinceAndCity(provinceAndCity);
+        userCenterVOResp.setPersonalProfile(userProfileService.findById(userId).get()
+                .getPersonalProfile());
+        userCenterVOResp.setUserTagList(userTagService.getUserTagList(userId));
+        List<Article> articles = articleService.getRecentArticles(userId);
+        List<ArticleResponse> articleResponseList = new ArrayList<>();
+        for (Article article : articles) {
+            List<String> tagList = articleTagService.findTagNameByArticleId(article.getId());
+            ArticleResponse articleResponse = new ArticleResponse();
+            BeanUtils.copyProperties(article, articleResponse);
+            articleResponse.setArticleTagList(tagList);
+            articleResponseList.add(articleResponse);
+        }
+        userCenterVOResp.setArticleList(articleResponseList);
+        return new RespResult(ResultCode.SUCCESS, userCenterVOResp);
     }
 
     private void initUserInfo(User user) {

@@ -16,10 +16,10 @@ public class ArticleResponse implements Serializable {
 
     private String content;
 
-    @JsonProperty("published_time")
+    @JsonProperty("publish_time")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date publishedTime;
+    private Date publishTime;
 
     @JsonProperty("article_tag_list")
     private List<String> articleTagList;
@@ -44,12 +44,12 @@ public class ArticleResponse implements Serializable {
         this.content = content;
     }
 
-    public Date getPublishedTime() {
-        return publishedTime;
+    public Date getPublishTime() {
+        return publishTime;
     }
 
-    public void setPublishedTime(Date publishedTime) {
-        this.publishedTime = publishedTime;
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 
     public List<String> getArticleTagList() {

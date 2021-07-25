@@ -14,6 +14,9 @@ import com.concordia.service.ArticleTagService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -123,8 +126,18 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, String>
         ArticleResponse articleResponse = new ArticleResponse();
         BeanUtils.copyProperties(article, articleResponse);
         articleResponse.setArticleTagList(tags);
-        articleResponse.setPublishedTime(new Date(article.getPublishTime().getTime()));
+        articleResponse.setPublishTime(new Date(article.getPublishTime().getTime()));
         return new RespResult(ResultCode.SUCCESS, articleResponse);
+    }
+
+    @Override
+    public List<Article> getRecentArticles(String userId) {
+        Pageable pageable = PageRequest.of(0, 10,
+                Sort.by(Sort.Direction.DESC, "publishTime"));
+        List<Article> articles = new ArrayList<>();
+
+        articleDao.findAll(pageable).forEach(articles::add);
+        return articles;
     }
 
 }
