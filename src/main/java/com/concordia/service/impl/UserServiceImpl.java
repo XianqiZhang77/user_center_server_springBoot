@@ -3,6 +3,7 @@ package com.concordia.service.impl;
 import com.concordia.common.strategy.ContextMapper;
 import com.concordia.common.strategy.OperatorStrategyEnum;
 import com.concordia.common.util.MD5Utils;
+import com.concordia.common.util.UUIDUtils;
 import com.concordia.component.exception.ValidateException;
 import com.concordia.component.validate.ReqValidateManager;
 import com.concordia.dao.UserDao;
@@ -16,6 +17,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, String>
@@ -79,6 +82,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
     }
 
     @Override
+    @Transactional(rollbackOn = Exception.class)
     public RespResult registerUser(RegisterRequest registerRequest) {
         User user = userDao.getByUsername(registerRequest.getUsername());
         user.setVerified(Boolean.TRUE);
@@ -116,7 +120,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, String>
         userPreference.setTodoNotice("1");
 
         UserTag userTag = new UserTag();
-        userTag.setId(userId);
+        userTag.setUserId(userId);
+        userTag.setId(UUIDUtils.getUUID());
 
         UserProfile userProfile = new UserProfile();
         userProfile.setUserId(userId);

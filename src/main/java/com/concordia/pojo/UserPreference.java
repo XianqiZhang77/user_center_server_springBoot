@@ -17,7 +17,7 @@ public class UserPreference implements Serializable {
 
     private static final long serialVersionUID = -8689637470554403026L;
     @Id
-    @Column(name = "user_id", nullable = false, length = 16)
+    @Column(name = "user_id", nullable = false, length = 48)
     private String userId;
 
     @Column(name = "todo_notice", length = 1)

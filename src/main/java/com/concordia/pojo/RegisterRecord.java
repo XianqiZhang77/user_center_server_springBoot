@@ -11,7 +11,7 @@ public class RegisterRecord implements Serializable {
     private static final long serialVersionUID = 8243079172090464012L;
 
     @Id
-    @Column(name = "id", length = 64)
+    @Column(name = "id", length = 48)
     private String id;
 
     @Column(name = "username", length = 16)

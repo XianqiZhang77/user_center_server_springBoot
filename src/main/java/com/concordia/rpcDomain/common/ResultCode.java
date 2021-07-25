@@ -12,6 +12,7 @@ public enum ResultCode {
     PERMISSION_SIGNATURE_ERROR(-2005, "permission signature failed"),
     PERMISSION_TOKEN_EXPIRED(-2006, "token has expired"),
     PERMISSION_TOKEN_INVALID(-2007, "token is invalid"),
+    PERMISSION_DENIED(-2012, "no permission to do this operation"),
     USER_UN_VERIFIED(-2008, "account does not exist or unverified"),
     WRONG_PASSWORD(-2009, "password does not match"),
     USER_UN_LOGGED_IN(-2010, "user is not in login status"),
@@ -23,6 +24,7 @@ public enum ResultCode {
 
     /* */
     USER_NOT_EXIST(20001, "user does not exist"),
+    RESULT_DATA_NONE(20002, "result cannot be found"),
     ;
 
     int code;
